@@ -1,0 +1,14 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.mapper.UserMapper">
+    <resultMap id="UserMap" type="com.demo.pojo.User">
+        <id property="userId" column="userId" jdbcType="VARCHAR"/>
+        <result property="userName" column="userName" jdbcType="VARCHAR"/>
+        <result property="userPassWord" column="userPassWord" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="queryUserNameIsExits" parameterType="String" resultMap="Boolean">
+
+    </select>
+
+
+</mapper>
