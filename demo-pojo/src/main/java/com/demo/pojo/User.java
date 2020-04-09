@@ -28,4 +28,13 @@ public class User {
     public void setUserPassWord(String userPassWord) {
         UserPassWord = userPassWord;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "UserId='" + UserId + '\'' +
+                ", UserName='" + UserName + '\'' +
+                ", UserPassWord='" + UserPassWord + '\'' +
+                '}';
+    }
 }

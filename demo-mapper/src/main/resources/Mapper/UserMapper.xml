@@ -6,9 +6,16 @@
         <result property="userPassWord" column="userPassWord" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="queryUserNameIsExits" parameterType="String" resultMap="Boolean">
-
+    <select id="getUser" resultMap="UserMap">
+        select * from user
     </select>
+
+    <insert id="addUser">
+        insert into user (userId, userName, userPassWord) values (
+        #{userId}, #{userName}, #{userPassWord}
+        )
+    </insert>
+
 
 
 </mapper>
