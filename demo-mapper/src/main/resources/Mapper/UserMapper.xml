@@ -6,11 +6,15 @@
         <result property="userPassWord" column="userPassWord" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <select id="getUser" resultMap="UserMap">
+    <select id="getUser" resultType="com.demo.pojo.User">
         select * from user
     </select>
 
-    <insert id="addUser">
+    <select id="getUserById" parameterType="java.lang.String" resultMap="UserMap">
+        select * from user where userId = #{userId}
+    </select>
+
+    <insert id="addUser" parameterType="java.lang.String">
         insert into user (userId, userName, userPassWord) values (
         #{userId}, #{userName}, #{userPassWord}
         )

@@ -1,6 +1,5 @@
 package com.demo;
 
-import com.demo.controller.LoginUpController;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

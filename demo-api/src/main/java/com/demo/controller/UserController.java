@@ -7,19 +7,27 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-public class LoginUpController {
+public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
     @GetMapping("/getUser")
     public Object getUser(){
-        User user = (User) userService.getUser();
+        List<User> users = userService.getUser();
+        return users.toString();
+    }
+
+    @GetMapping("/getUserById")
+    public Object getUserById(String userId){
+        User user = (User) userService.getUserById(userId);
         return user.toString();
     }
 
     @GetMapping("/addUser")
     public void addUser(String userId, String userName, String userPassWord){
-        userService.addUser("wang","王","123");
+        userService.addUser(userId, userName, userPassWord);
     }
 }
