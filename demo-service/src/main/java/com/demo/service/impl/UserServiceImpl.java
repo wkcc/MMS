@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public User getUserById(String userId) {
-        User user = userMapper.selectByPrimaryKey(userId);
+        User user = userMapper.getUserById(userId);
         return user;
     }
 }

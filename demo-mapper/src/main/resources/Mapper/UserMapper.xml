@@ -10,11 +10,11 @@
         select * from user
     </select>
 
-    <select id="getUserById" parameterType="java.lang.String" resultMap="UserMap">
+    <select id="getUserById" parameterType="String" resultMap="UserMap">
         select * from user where userId = #{userId}
     </select>
 
-    <insert id="addUser" parameterType="java.lang.String">
+    <insert id="addUser" parameterType="String">
         insert into user (userId, userName, userPassWord) values (
         #{userId}, #{userName}, #{userPassWord}
         )
