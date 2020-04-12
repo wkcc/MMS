@@ -5,7 +5,6 @@ import com.demo.pojo.User;
 import com.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -15,17 +14,24 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    @Override
     public List<User> getUser(){
         List<User> users = (List<User>) userMapper.getUser();
         return users;
     }
 
-    public void addUser(String userId, String userName, String userPassWord){
-        userMapper.addUser(userId, userName, userPassWord);
+    @Override
+    public void updateUserById(User user) {
+        userMapper.updateUserById(user);
     }
 
-    public User getUserById(String userId) {
-        User user = userMapper.getUserById(userId);
-        return user;
+    @Override
+    public User login(String idOrName, String passWord) {
+        return userMapper.login(idOrName, passWord);
+    }
+
+    @Override
+    public void signUp(User user) {
+        userMapper.signUp(user);
     }
 }

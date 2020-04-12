@@ -15,22 +15,36 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserServiceImpl userService;
-
+    @Autowired
+    private User user;
     @GetMapping("/get")
     public Object getUser(){
         List<User> users = userService.getUser();
         return users;
     }
 
-    @GetMapping("/getById")
-    public Object getUserById(@RequestParam String userId){
-        User user = (User) userService.getUserById(userId);
-        return user.toString();
-    }
-
-    @PostMapping("/add")
-    public HttpStatus addUser(@RequestBody UserBo userBo){
-        userService.addUser(userBo.getUserId(), userBo.getUserName(), userBo.getUserPassWord());
+    @PostMapping("/update")
+    public HttpStatus updateUserById(@RequestBody UserBo userBo){
+        user.setUserId(userBo.getUserId());
+        user.setUserName(userBo.getUserName());
+        user.setPassWord(userBo.getPassWord());
+        userService.updateUserById(user);
         return HttpStatus.OK;
     }
+
+    @PostMapping("/login")
+    public User login(@RequestBody UserBo userBo){
+        user = userService.login(userBo.getIdOrName(), userBo.getPassWord());
+        return user;
+    }
+
+    @PostMapping("/sign_up")
+    public HttpStatus signUp(@RequestBody UserBo userBo){
+        user.setUserId(userBo.getUserId());
+        user.setUserName(userBo.getUserName());
+        user.setPassWord(userBo.getPassWord());
+        userService.signUp(user);
+        return HttpStatus.OK;
+    }
+
 }
