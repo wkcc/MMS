@@ -9,5 +9,5 @@ public interface UserService {
     List<User> getUser();
     void updateUserById(User user);
     User login(String idOrName, String passWord);
-    void signUp(User user);
+    void register(User user);
 }

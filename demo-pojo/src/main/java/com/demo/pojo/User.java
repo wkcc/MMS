@@ -15,7 +15,7 @@ public class User implements Serializable,Cloneable{
     //@JSONField(name="userName")
     private String userName ;
     /** 用户密码 */
-    //@JSONField(name="passWord")
+    @JSONField(name="passWord", serialize = false)
     private String passWord ;
     /** 乐观锁 */
     private Integer revision ;

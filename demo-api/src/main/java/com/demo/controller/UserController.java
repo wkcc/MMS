@@ -10,20 +10,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
 @CrossOrigin("http://127.0.0.1:8083")
 public class UserController {
     @Autowired
     private UserServiceImpl userService;
     @Autowired
     private User user;
-    @GetMapping("/get")
+    @GetMapping("user")
     public Object getUser(){
         List<User> users = userService.getUser();
         return users;
     }
 
-    @PostMapping("/update")
+    @PostMapping("user/id")
     public HttpStatus updateUserById(@RequestBody UserBo userBo){
         user.setUserId(userBo.getUserId());
         user.setUserName(userBo.getUserName());
@@ -32,18 +31,24 @@ public class UserController {
         return HttpStatus.OK;
     }
 
-    @PostMapping("/login")
-    public User login(@RequestBody UserBo userBo){
-        user = userService.login(userBo.getIdOrName(), userBo.getPassWord());
+    @PostMapping("login")
+    public Object login(@RequestBody UserBo userBo){
+        String idOrName = userBo.getIdOrName();
+        String passWord = userBo.getPassWord();
+        if(idOrName == null)
+                return HttpStatus.UNAUTHORIZED;
+        else if(passWord == null)
+                return HttpStatus.UNAUTHORIZED;
+        user = userService.login(idOrName, passWord);
         return user;
     }
 
-    @PostMapping("/sign_up")
-    public HttpStatus signUp(@RequestBody UserBo userBo){
+    @PostMapping("register")
+    public HttpStatus register(@RequestBody UserBo userBo){
         user.setUserId(userBo.getUserId());
         user.setUserName(userBo.getUserName());
         user.setPassWord(userBo.getPassWord());
-        userService.signUp(user);
+        userService.register(user);
         return HttpStatus.OK;
     }
 

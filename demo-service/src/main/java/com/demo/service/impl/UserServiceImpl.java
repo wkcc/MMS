@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void signUp(User user) {
-        userMapper.signUp(user);
+    public void register(User user) {
+        userMapper.register(user);
     }
 }

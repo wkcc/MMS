@@ -19,7 +19,7 @@
         select * from user where userId = #{idOrName} or userName = #{idOrName} and passWord = #{passWord}
     </select>
 
-    <insert id="signUp" parameterType="String">
+    <insert id="register" parameterType="String">
         insert into user (userId, userName, passWord) values (
         #{userId}, #{userName}, #{passWord}
         )
