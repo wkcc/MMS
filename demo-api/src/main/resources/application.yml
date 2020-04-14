@@ -29,3 +29,5 @@ mybatis:
   type-aliases-package: com.demo.pojo          # 所有POJO类所在包路径
   mapper-locations: classpath:mapper/*.xml      # mapper映射文件
   config-path: mybatis-config.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
